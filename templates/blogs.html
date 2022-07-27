@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+{% block title %}
+<title>Blog list</title>
+{% endblock %}
+{% block body %}
+<div class="container mt-3">
+  <div class="row">
+    {% for blog in blog  %}
+    <div class="col-sm-6 mt-3">
+      <div class="card card-block">
+        <img src="{{blog.image.url}}" alt="" class="img-thumbnail h-25">
+        <h3 class="card-title">{{blog.title}}</h3>
+        <p class="card-text">{{blog.summary|truncatechars:15}}</p>
+        <a href="{% url 'blogs_details' blog.id %}" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
